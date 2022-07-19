@@ -1,0 +1,23 @@
+accountz
+balance.toString()
+balance
+const balance = await ethers.provider.getBalance(accountz[0].address)
+accountz[0].address
+accountz[0]
+const accountz = await ethers.getSigners()
+const accounts = await ethers.getSigners()
+accounts[0]
+accounts
+accounts[0].address
+await accounts[0].address
+await accounts[0]
+accounts[0]
+accounts
+const accounts = await ethers.getSigner()
+await token.name()
+await token.name
+token.name()
+token.name
+token.address
+token
+const token = await ethers.getContractAt("Token", "0x5fbdb2315678afecb367f032d93f642f64180aa3")
