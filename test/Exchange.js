@@ -15,6 +15,7 @@ describe('Exchange', () => {
     const Token = await ethers.getContractFactory('Token')
 
     token1 = await Token.deploy('Noah', 'NOAH', '1000000')
+    token2 = await Token.deploy('OxyDjinn', 'COO', '1000000')
 
     accounts = await ethers.getSigners()
     deployer = accounts[0]
@@ -144,6 +145,53 @@ describe('Exchange', () => {
     it('returns user balance', async () => {
       expect(await exchange.balanceOf(token1.address, user1.address)).to.equal(amount)
     })
+  })
 
+  describe('Making orders', async() => {
+    let transaction, result
+    let amountGive = tokens(1)
+    let amountGet = tokens(2)
+    let amount = tokens(10)
+
+    describe('Success', async () => {
+      beforeEach(async () => {
+        // Approve Token
+        transaction = await token1.connect(user1).approve(exchange.address, amount)
+        result = await transaction.wait()
+        // Deposit token
+        transaction = await exchange.connect(user1).depositToken(token1.address, amount)
+        result = await transaction.wait()
+        // Make order
+        transaction = await exchange.connect(user1).makeOrder(token2.address, amountGet, token1.address, amountGive)
+        result = await transaction.wait()
+      })
+
+      it('tracks the newly created order', async () => {
+        expect(await exchange.ordersCount()).to.be.equal('1')
+      })
+
+      it('emits an Order event', async () => {
+        const event = result.events[0]
+        expect(event.event).to.be.equal('Order')
+
+        const args = event.args
+        expect(args.id).to.equal(1)
+        expect(args.user).to.equal(user1.address)
+        expect(args.tokenGet).to.be.equal(token2.address)
+        expect(args.amountGet).to.be.equal(amountGet)
+        expect(args.tokenGive).to.be.equal(token1.address)
+        expect(args.amountGive).to.be.equal(amountGive)
+        expect(args.timestamp).to.at.least(1)
+
+
+      })
+
+    })
+
+    describe('Failure', async() => {
+      it('Rejects with no balance', async() => {
+        await expect(exchange.connect(user1).makeOrder(token2.address, tokens(1), token1.address, tokens(1))).to.be.reverted
+      })
+    })
   })
 })
