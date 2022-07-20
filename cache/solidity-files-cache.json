@@ -74,8 +74,8 @@
       ]
     },
     "/Users/itahand/Documents/GitHub/Crypto-Exchange/contracts/Exchange.sol": {
-      "lastModificationDate": 1658341282321,
-      "contentHash": "cfdd012db61eddd1d1393d81343dac34",
+      "lastModificationDate": 1658344523003,
+      "contentHash": "1ba1333839f36e4c9ad5ac415c728dbe",
       "sourceName": "contracts/Exchange.sol",
       "solcConfig": {
         "version": "0.8.9",
