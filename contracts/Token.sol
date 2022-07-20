@@ -54,6 +54,7 @@ contract Token {
         address _to,
         uint256 _value
     ) internal {
+        // Require the address is not invalid.
         require(_to != address(0));
 
         balanceOf[_from] = balanceOf[_from] - _value;

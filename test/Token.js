@@ -2,16 +2,20 @@ const { expect } = require('chai');
 const { ethers } = require('hardhat');
 
 const tokens = (n) => {
+  // Helper function for decimals.
   return ethers.utils.parseUnits(n.toString(), 'ether')
 }
 
 describe('Token', () => {
+  // Assigning global variables inside the function.
   let token, accounts, deployer, receiver, exchange
 
   beforeEach(async () => {
+    // Retreiving the token
     const Token = await ethers.getContractFactory('Token')
     token = await Token.deploy('Noah', 'NOAH', '1000000')
 
+    // Assigning addresses to accounts.
     accounts = await ethers.getSigners()
     deployer = accounts[0]
     receiver = accounts[1]
