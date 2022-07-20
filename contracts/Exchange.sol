@@ -139,4 +139,41 @@ contract Exchange {
         block.timestamp
       );
     }
+
+    // Executing Orders
+
+    function fillOrder(uint256 _id)
+    public
+    {
+      // Fetch order
+      _Order storage _order = orders[_id];
+
+      // Swap tokens
+      _swap(
+        _order.id,
+        _order.user,
+        _order.tokenGet,
+        _order.amountGet,
+        _order.tokenGive
+      );
+    }
+
+    function _swap(
+      uint256 _orderId,
+      address _user,
+      address _tokenGet,
+      uint256 _amountGet,
+      address _tokenGive,
+      uint256 _amountGive
+    )
+    internal
+    {
+      // Swap functionality
+      // Take token2 from user2 and give it to user1
+      tokens[_tokenGet][msg.sender] = tokens[_tokenGet][msg.sender] - _amountGet;
+      tokens[_tokenGet][_user] = tokens[_tokenGet][_user] + _amountGet;
+      // Take token1 from user1 and give it to user2
+      tokens[_tokenGive][_user] = tokens[_tokenGive][_user] - _amountGive;
+      tokens[_tokenGive][msg.sender] = tokens[_tokenGive][msg.sender] + _amountGive;
+    }
 }
