@@ -12,13 +12,15 @@ async function main() {
 
 
   // Deploy contracts
-  const noah = await Token.deploy('Noah', 'NOAH', '1000000')
+  const noah = await Token.deploy("Noah", 'NOAH', "1000000")
   await noah.deployed()
+  let symbol = await noah.symbol()
+  console.log(symbol)
   console.log(`NOAH Deployed to: ${noah.address}`)
 
   const c00 = await Token.deploy('OxyDjinn', 'COO', '1000000')
   await c00.deployed()
-  console.log(`C00 Deployed to: ${c00.address}`)
+  console.log(`COO Deployed to: ${c00.address}`)
 
   const doge = await Token.deploy('Dogecoin', 'DOGE', '1000000')
   await doge.deployed()

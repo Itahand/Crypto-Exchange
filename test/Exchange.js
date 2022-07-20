@@ -61,7 +61,7 @@ describe('Exchange', () => {
       })
 
       it('emits a Deposit event', async () => {
-        const event = result.events[2] // 2 events are emitted
+        const event = result.events[1] // 2 events are emitted
         expect(event.event).to.equal('Deposit')
 
         const args = event.args

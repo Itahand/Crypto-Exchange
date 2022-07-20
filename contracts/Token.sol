@@ -90,7 +90,6 @@ contract Token {
 
         _transfer(_from, _to, _value);
 
-        emit Transfer(msg.sender, _to, _value);
         return true;
     }
 }

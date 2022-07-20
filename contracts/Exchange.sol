@@ -19,8 +19,17 @@ contract Exchange {
 
     // Events
 
-    event Deposit(address token, address user, uint256 amount, uint256 balance);
-    event Withdraw(address token, address user, uint256 amount, uint256 balance);
+    event Deposit(
+      address token,
+      address user,
+      uint256 amount,
+      uint256 balance
+      );
+    event Withdraw(
+      address token,
+      address user,
+      uint256 amount,
+      uint256 balance);
     event Order(
       uint256 id,
       address user,
@@ -87,9 +96,10 @@ contract Exchange {
     public
     {
       require(tokens[_token][msg.sender] >= _amount);
+      // Transfer tokens to user
       Token(_token).transfer(msg.sender, _amount);
-        tokens[_token][msg.sender] = tokens[_token][msg.sender] - _amount;
-        emit Withdraw(_token, msg.sender, _amount, tokens[_token][msg.sender]);
+      tokens[_token][msg.sender] = tokens[_token][msg.sender] - _amount;
+      emit Withdraw(_token, msg.sender, _amount, tokens[_token][msg.sender]);
 
     }
 
