@@ -74,8 +74,8 @@
       ]
     },
     "/Users/itahand/Documents/GitHub/Crypto-Exchange/contracts/Exchange.sol": {
-      "lastModificationDate": 1658331492867,
-      "contentHash": "f4797025d4f3f0ade8660f0d19554a12",
+      "lastModificationDate": 1658334650803,
+      "contentHash": "3cf264cfb14a4674f89c2a59a12aaf56",
       "sourceName": "contracts/Exchange.sol",
       "solcConfig": {
         "version": "0.8.9",
@@ -101,7 +101,8 @@
         }
       },
       "imports": [
-        "hardhat/console.sol"
+        "hardhat/console.sol",
+        "./Token.sol"
       ],
       "versionPragmas": [
         "^0.8.0"
@@ -146,8 +147,8 @@
       ]
     },
     "/Users/itahand/Documents/GitHub/Crypto-Exchange/contracts/Token.sol": {
-      "lastModificationDate": 1658330305671,
-      "contentHash": "38cac3dcd9542e305a86ac2956180a07",
+      "lastModificationDate": 1658334461130,
+      "contentHash": "94bf155ec0fefc1325def56e2a044977",
       "sourceName": "contracts/Token.sol",
       "solcConfig": {
         "version": "0.8.9",
