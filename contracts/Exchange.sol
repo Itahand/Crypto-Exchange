@@ -15,6 +15,7 @@ contract Exchange {
     // Orders mappings
     mapping(uint256 => _Order) public orders;
     mapping(uint256 => bool) public orderCancelled;
+    mapping(uint256 => bool) public orderFilled;
 
     // Events
 
@@ -36,6 +37,16 @@ contract Exchange {
       uint256 amountGet,
       address tokenGive,
       uint256 amountGive,
+      uint256 timestamp
+    );
+    event Swap(
+      uint256 id,
+      address user,
+      address tokenGet,
+      uint256 amountGet,
+      address tokenGive,
+      uint256 amountGive,
+      address creator,
       uint256 timestamp
     );
 
@@ -145,6 +156,12 @@ contract Exchange {
     function fillOrder(uint256 _id)
     public
     {
+      // Must be valid orderId
+      require(_id > 0 && _id <= ordersCount, 'Order does not exist');
+      // Order can't be filled
+      require(!orderFilled[_id]);
+      // Order can't be cancelled
+      require(!orderCancelled[_id]);
       // Fetch order
       _Order storage _order = orders[_id];
 
@@ -154,8 +171,12 @@ contract Exchange {
         _order.user,
         _order.tokenGet,
         _order.amountGet,
-        _order.tokenGive
+        _order.tokenGive,
+        _order.amountGive
       );
+
+      // Mark order as filled
+      orderFilled[_order.id] = true;
     }
 
     function _swap(
@@ -168,12 +189,33 @@ contract Exchange {
     )
     internal
     {
+      // Fee is paid by the user who filled the order (msg.sender)
+      // Fee is deducted from _amountGet
+      uint256 _feeAmount = (_amountGet * feePercent) / 100;
+
       // Swap functionality
+      // msg.sender filled the order; _user created it
+
       // Take token2 from user2 and give it to user1
-      tokens[_tokenGet][msg.sender] = tokens[_tokenGet][msg.sender] - _amountGet;
+      tokens[_tokenGet][msg.sender] = tokens[_tokenGet][msg.sender] - (_amountGet + _feeAmount);
       tokens[_tokenGet][_user] = tokens[_tokenGet][_user] + _amountGet;
+
+      // Charge fees
+      tokens[_tokenGet][feeAccount] = tokens[_tokenGet][feeAccount] + _feeAmount;
+
       // Take token1 from user1 and give it to user2
       tokens[_tokenGive][_user] = tokens[_tokenGive][_user] - _amountGive;
       tokens[_tokenGive][msg.sender] = tokens[_tokenGive][msg.sender] + _amountGive;
+
+      emit Swap(
+        _orderId,
+        msg.sender,
+        _tokenGet,
+        _amountGet,
+        _tokenGive,
+        _amountGive,
+        _user,
+        block.timestamp
+      );
     }
 }
