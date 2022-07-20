@@ -114,7 +114,7 @@ contract Exchange {
         require(balanceOf(_tokenGive, msg.sender) >= _amountGive);
 
         // Make the order
-        ordersCount = ordersCount + 1;
+        ordersCount++;
         orders[ordersCount] = _Order(
           ordersCount, // id
           msg.sender, // user
