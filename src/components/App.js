@@ -15,6 +15,7 @@ import Navbar from './Navbar'
 import Markets from './Markets'
 import Balance from './Balance'
 import Order from './Order'
+import OrderBook from './OrderBook'
 
 function App() {
   const dispatch = useDispatch()
@@ -77,7 +78,7 @@ function App() {
 
           {/* Trades */}
 
-          {/* OrderBook */}
+          <OrderBook/>
 
         </section>
       </main>
