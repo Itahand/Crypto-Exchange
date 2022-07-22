@@ -14,6 +14,18 @@
     }
   },
   "42": {
+    "exchange": {
+      "address": "0xf6c46c03d79A3151134E2D44fEA0162c651538C5"
+    },
+    "NOAH": {
+      "address": "0x878129F7dCEA0F728B6A37F87671702B280f4FAa"
+    },
+    "COO": {
+      "address": "0x976D8545778890587b8FaaCC3c9Cb7F380383294"
+    },
+    "DOGE": {
+      "address": "0x3be38AFA34B2f9960d3e466087C62586a23D3e64"
+    },
     "explorerURL": "https://kovan.etherscan.io/"
   }
 }
