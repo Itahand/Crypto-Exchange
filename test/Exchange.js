@@ -172,7 +172,7 @@ describe('Exchange', () => {
       })
 
       it('tracks the newly created order', async () => {
-        expect(await exchange.ordersCount()).to.be.equal('1')
+        expect(await exchange.orderCount()).to.be.equal('1')
       })
 
       it('emits an Order event', async () => {
@@ -303,9 +303,9 @@ describe('Exchange', () => {
           expect(await exchange.orderFilled(1)).to.equal(true)
         })
 
-        it('emits a Swap event', async () => {
+        it('emits a Trade event', async () => {
           const event = result.events[0]
-          expect(event.event).to.equal('Swap')
+          expect(event.event).to.equal('Trade')
 
           const args = event.args
           expect(args.id).to.equal(1)

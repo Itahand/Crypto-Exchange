@@ -38,7 +38,8 @@ async function main() {
 
   // user1 transfers 10,000 COO...
   let transaction, result
-  transaction = await COO.connect(sender).transfer(receiver.address, amount)
+  transaction = await COO.connect(sender).transfer(receiver.address, tokens(100000))
+  transaction = await NOAH.connect(sender).transfer(receiver.address, tokens(100000))
   console.log(`Transferred ${amount} tokens from ${sender.address} to ${receiver.address}\n`)
 
   // Set up exchange users

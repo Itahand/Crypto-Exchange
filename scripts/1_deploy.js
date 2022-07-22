@@ -1,5 +1,3 @@
-const { ethers } = require("hardhat")
-
 async function main() {
   console.log('Preparing deployment... \n')
   // Fetch contract to deploy
