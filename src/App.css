@@ -2,10 +2,10 @@
 
 :root {
   --clr-primary: #ae8ca6;
-  --clr-secondary: #c1cee7;
+  --clr-secondary: #c1cde5;
   --clr-neutral: #767F92;
 
-  --clr-white: #F1F2F9;
+  --clr-white: #ffffff;
   --clr-blue: #2187D0;
   --clr-red: #F45353;
   --clr-green: #25CE8F;
@@ -198,7 +198,7 @@ small {
   justify-content: center;
   align-items: center;
 
-  background: #222D41;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
   border: none;
   color: var(--clr-white);
 
@@ -215,7 +215,7 @@ small {
 }
 
 .exchange__header--account button:hover {
-  background: var(--clr-blue);
+  background:  radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 76%);
   border: none;
 }
 
@@ -458,8 +458,8 @@ hr {
 
 .button:hover,
 .button--sm:hover {
-  color: var(--clr-white);
-  border: 1.5px solid var(--clr-white);
+  color: black;
+  border: 1.5px solid white;
 }
 
 .button:hover span::after {
@@ -485,8 +485,8 @@ hr {
 /* -- Input -- */
 
 input {
-  background: var(--clr-primary);
-  color: var(--clr-text);
+  background: white;
+  color: black);
 
   border: none;
   border-radius: 10px;
@@ -503,7 +503,7 @@ input {
 }
 
 input::placeholder {
-  color: var(--clr-neutral);
+  color: black;
 }
 
 /* ------------------------------------------------------ */
