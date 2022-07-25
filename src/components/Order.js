@@ -56,9 +56,9 @@ const Order = () => {
       <form onSubmit={isBuy ? buyHandler : sellHandler }>
 
         {isBuy ? (
-          <label htmlFor="amount">Buy Amount (NOAH)</label>
+          <label htmlFor="amount">Buy Amount </label>
         ) : (
-          <label htmlFor="amount">Sell Amount (NOAH)</label>
+          <label htmlFor="amount">Sell Amount </label>
         )}
 
         <input
@@ -70,9 +70,9 @@ const Order = () => {
         />
 
         {isBuy ? (
-          <label htmlFor="price">Buy Price</label>
+          <label htmlFor="price">Buy Price (NOAH)</label>
         ) : (
-          <label htmlFor="price">Sell Price</label>
+          <label htmlFor="price">Sell Price (NOAH)</label>
         )}
 
         <input
