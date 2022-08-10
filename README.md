@@ -1,15 +1,3 @@
-# Basic Sample Hardhat Project
+# My web3 portfolio starts with my own cryptocurrency exchange built on the Kovan network. In it you can deposit or withdraw tokens and place, cancel or fill orders. It logs every transaction and shows the token's price changes in a dynamic candle shart. For the back-end and test units I used Hardhat, JavaScript with Chai and for the front-end I used React, Redux and Ethers.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+To use the Exchange you'll need to get NOAH from the faucet. Then deposit it in the Exchange and then you can fill orders with it. The only pair available right now is NOAH/COO. When you make a trade; you can withdraw your new tokens to visualize them in your wallet.
