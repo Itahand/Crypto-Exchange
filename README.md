@@ -27,9 +27,11 @@ Install these prerequisites to follow along with the tutorial. See free video tu
 ```
 $ cd crypto-exchange
 $ npm install
-
-
-## Step 3. Run Hardhat network
 ```
+
+## Step 3. Run Hardhat netwrok and scripts
+```
+
 $ npx hardhat node
 $ npx hardhat run --network localhost scripts/1_deploy.js
+```
